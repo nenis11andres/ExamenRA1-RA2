@@ -9,6 +9,15 @@ resource "aws_vpc" "main" {
     }
 }
 
+resource "aws_internet_gateway" "main" {
+    vpc_id = aws_vpc.main.id
+    
+    tags = {
+        Name = "main-igw"
+    }
+}
+
+
 #subnet publica
 resource "aws_subnet" "public" {
     vpc_id = aws_vpc.main.id
@@ -96,6 +105,6 @@ resource "aws_instance" "apache" {
     user_data = file("${path.module}/scripts/apache.sh")
 
     tags = {
-        Name = "apache-server"
+        Name = "apache-examen"
     }
 }
