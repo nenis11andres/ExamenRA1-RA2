@@ -6,6 +6,4 @@ services:
       dockerfile: docker/apache/Dockerfile
     ports:
       - "${APACHE_HOST_PORT:-8081}:80"
-    enviroment:
-      - APP_env=prod
     restart: unless-stopped
